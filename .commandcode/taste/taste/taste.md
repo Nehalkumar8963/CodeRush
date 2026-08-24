@@ -1,0 +1,27 @@
+# Taste
+- Prefers black/dark UI aesthetics for web apps. Confidence: 0.85
+- Dislikes green accent colors in UI — explicitly asked to remove all green and make the UI black (accent was swapped to gold). Confidence: 0.8
+- Prefers maximalist, feature-rich UI layouts over sparse/minimal ones (explicitly favors bold decorative shells: ambient glow orbs, gradient backgrounds, neon accents). Confidence: 0.8
+- Communicates tersely in short, all-caps, imperative messages — both when reporting problems ("TYPING IS NOT WORKING") and when issuing commands ("RUN", "RUN TYPE WEBSITE", "STOP ALL THE WEBPROJECTS"). Confidence: 0.9
+- Prefers modular architecture with game/domain logic decoupled from UI (separate logical modules such as engine, timer, scoring, and results). Confidence: 0.8
+- Prefers avoiding unnecessary dependencies. Confidence: 0.7
+- Prefers strongly typed code (TypeScript). Confidence: 0.7
+- Prefers original UI designs over copying a reference site verbatim. Confidence: 0.7
+- Prefers responsive, mobile-first layouts that work on phone screens (including Android) — handling mobile viewport quirks like `100dvh` and `viewport-fit=cover`, with scrollable nav/tab rows and wrapping HUD/stats on narrow screens. Confidence: 0.8
+- Prefers yellow/gold accent color for important UI elements within dark themes. Confidence: 0.6
+- Prefers all game/typing metrics computed from real input data rather than hardcoded or fake values. Confidence: 0.6
+- Prefers reusing existing components/styles where appropriate and verifying the build plus end-to-end behavior before declaring a feature done. Confidence: 0.6
+- Prefers storing API keys/secrets in .env files rather than hardcoding them in source. Confidence: 0.8
+- Prefers Firebase for backend services (e.g. Google auth) in web projects. Confidence: 0.7
+- Prefers Google (OAuth) sign-in only, without email/password authentication. Confidence: 0.7
+- Prefers minimal client-side form validation — disables native browser validation (e.g. required/minLength/noValidate) and lets the backend/service surface errors instead of blocking submissions. Confidence: 0.6
+- Prefers polished profile UI: a top-bar profile pill (avatar with initial fallback + caret) opening a dropdown with avatar, name, email, and sign-out, closable via backdrop click. Confidence: 0.6
+- Uses GitHub for version control and expects the agent to handle committing and pushing the project. Confidence: 0.6
+- Prefers a CMD/CLI terminal-style interface (command-line/console aesthetic) for the typing game UI — including terminal chrome like a boot sequence, window title bar, prompt symbols (`❯`), blinking cursor, scanlines, and a status-bar HUD. Confidence: 0.85
+- Prefers game overlays (start/instruction screens) to never obstruct gameplay — start panels should unmount completely once play begins rather than floating over the game area. Confidence: 0.85
+- Prefers a dedicated fixed input/command bar at the bottom of the gameplay screen that never overlaps the content/falling-word area. Confidence: 0.7
+- Prefers a modern, clean game UI aesthetic — restrained neon accents, dark surfaces, smooth animations, depth, spacing, and modern typography — and dislikes dated/flat "old HTML game" looks. Confidence: 0.7
+- Prefers compact futuristic HUD stat chips: small uppercase labels above large glowing numeric values with consistent spacing, timer prominent in the top-right. Confidence: 0.6
+- Prefers clearly distinct visual states for game entities (e.g., normal / targeted / correctly typed / missed / danger). Confidence: 0.6
+- Prefers preserving existing game mechanics during visual redesigns — focusing changes on layout, visual hierarchy, animations, responsiveness, and usability. Confidence: 0.6
+- Prefers GitHub-facing documentation: a README covering project overview, features, tech stack, setup/env config, and controls. Confidence: 0.6
