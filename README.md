@@ -82,20 +82,5 @@ src/
 
 ---
 
-## Getting Started
-
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Configure Firebase (optional — for Google sign-in)
-#    Create src/.env from the template below and add your API key
-
-# 3. Run the dev server
-npm run dev
-
-# 4. Production build
-npm run build
-```
 
 
