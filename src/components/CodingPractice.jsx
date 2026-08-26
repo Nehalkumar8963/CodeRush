@@ -4,14 +4,14 @@ import DifficultyPicker from './DifficultyPicker.jsx'
 import { SNIPPETS } from '../data/snippets.js'
 
 export default function CodingPractice({ active }) {
-  const [difficulty, setDifficulty] = useState('normal')
+  const [difficulty, setDifficulty] = useState('easy')
   return (
     <>
       <div className="section-head">
         <div className="section-title">
           <b>Coding</b> Practice
         </div>
-        <DifficultyPicker value={difficulty} onChange={setDifficulty} />
+        <DifficultyPicker value={difficulty} onChange={setDifficulty} options={['easy', 'medium']} />
       </div>
       <GameEngine
         items={SNIPPETS[difficulty]}

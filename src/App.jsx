@@ -7,7 +7,6 @@ import MusicPlayer from './components/MusicPlayer.jsx'
 import TypingGame from './devtype/TypingGame.jsx'
 import HowItWorks from './components/HowItWorks.jsx'
 import AuthButton from './components/AuthButton.jsx'
-import ThemePicker from './components/ThemePicker.jsx'
 
 const TABS = [
   { id: 'normal', label: 'Normal' },
@@ -41,7 +40,6 @@ export default function App() {
             </button>
           ))}
         </nav>
-        <ThemePicker />
         <AuthButton />
       </header>
 

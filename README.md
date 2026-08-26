@@ -98,34 +98,4 @@ npm run dev
 npm run build
 ```
 
-### Environment setup
 
-Create `src/.env` (never commit it):
-
-```env
-VITE_FIREBASE_API_KEY=your-api-key
-VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=your-project
-VITE_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
-VITE_FIREBASE_MESSAGING_SENDER_ID=123456789
-VITE_FIREBASE_APP_ID=1:123:web:abc
-VITE_FIREBASE_MEASUREMENT_ID=G-XXXXXXX
-```
-
-Enable **Google** as a sign-in provider in the Firebase Console and add your dev URL to **Authorized domains**.
-
-> Note: Vite reads `.env` from `./src` (see `vite.config.js`). `VITE_`-prefixed values are exposed to the client — that's expected for Firebase config; protect data with Firestore/Auth security rules, not API keys.
-
----
-
-## Controls
-
-- **Desktop:** just start typing — the timer begins on your first keystroke. Backspace works, pasting is blocked while playing.
-- **Mobile:** tap the input field, use the on-screen keyboard. Layout is fully responsive (Android included — `100dvh`, scrollable tabs, wrapping HUD).
-- **Start / Retry:** press `Enter` or click the START button.
-
----
-
-## License
-
-MIT — do whatever you want, just keep typing fast. ⌨️

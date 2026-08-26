@@ -1,9 +1,9 @@
-// Timer — headless countdown. Started only when typing begins (practice mode
-// has no countdown). Uses a self-correcting interval so drift is negligible.
+// Timer — headless countdown. Uses a self-correcting interval so drift is
+// negligible.
 
 export function createTimer() {
   return {
-    limit: null, // seconds or null = practice (no limit)
+    limit: null,
     remaining: 0,
     running: false,
     intervalId: null,

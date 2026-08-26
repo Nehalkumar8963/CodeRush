@@ -45,17 +45,6 @@ const MODES = [
     ],
   },
   {
-    title: 'DevType',
-    accent: 'var(--yellow)',
-    tagline: 'code typing challenge',
-    lines: [
-      'Type an entire code snippet in a real editor-style panel.',
-      'Pick a language, a mode (Timed or Practice) and a time limit.',
-      'The timer starts on your first keystroke.',
-      'Get live WPM, CPM and accuracy, then a full results report.',
-    ],
-  },
-  {
     title: 'Music',
     accent: 'var(--blue)',
     tagline: 'soundtrack',
@@ -69,7 +58,7 @@ const MODES = [
 
 const BASICS = [
   { k: 'Difficulty', v: 'Easy / Medium / Normal / Hard change fall speed, spawn rate and word length.' },
-  { k: 'Timer', v: 'Every arcade round runs for 60 seconds. DevType lets you pick 15s–120s or custom.' },
+  { k: 'Timer', v: 'Every arcade round runs for 60 seconds.' },
   { k: 'Lives', v: 'You start with 3 lives. A falling item crossing the bottom line costs one.' },
   { k: 'Scoring', v: 'Points grow with word length and your combo multiplier. WPM and accuracy are computed from real typing.' },
   { k: 'Combo', v: 'Every destroyed item raises your combo. Missing one resets it to zero.' },

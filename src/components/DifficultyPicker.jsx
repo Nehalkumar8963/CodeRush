@@ -5,10 +5,10 @@ const LABELS = {
   hard: { text: 'Hard', cls: 'active-hard' },
 }
 
-export default function DifficultyPicker({ value, onChange }) {
+export default function DifficultyPicker({ value, onChange, options = ['easy', 'medium', 'normal', 'hard'] }) {
   return (
     <div className="diff-picker">
-      {['easy', 'medium', 'normal', 'hard'].map((d) => (
+      {options.map((d) => (
         <button
           key={d}
           className={'diff-btn' + (value === d ? ' ' + LABELS[d].cls : '')}

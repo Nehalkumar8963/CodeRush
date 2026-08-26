@@ -6,7 +6,8 @@
       "Shell(type:*)",
       "Shell(rmdir:*)",
       "Shell(del:*)",
-      "Shell(set:*)"
+      "Shell(set:*)",
+      "Shell(npx vite --port 5199 --strictPort)"
     ],
     "deny": [],
     "defaultMode": "default"

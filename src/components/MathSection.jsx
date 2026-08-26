@@ -5,9 +5,9 @@ import { generateMath } from '../data/math.js'
 
 const INTRO = (
   <>
-    equations fall from the sky — type the <b>answer</b> (digits only) to destroy them.
+    solve the falling equations — type the answer.
     <br />
-    wrong digit = error · missed equation = <b>-1 life</b> · <b>3 lives</b> · <b>60s</b>
+    <b>3 lives</b> · <b>60s</b>
   </>
 )
 

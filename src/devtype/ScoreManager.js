@@ -1,15 +1,12 @@
-// ScoreManager — computes all statistics from real typing data.
-// No hardcoded values: everything derives from the engine counters.
+// ScoreManager — computes statistics from real typing data.
 
 export function computeScore(engine, mode, timeLimitSeconds) {
   const elapsedMs = engine.elapsedMs
   const elapsedMinutes = elapsedMs / 60000
 
-  // WPM = correct characters / 5 / elapsed minutes
   const wpm =
     elapsedMinutes > 0.01 ? Math.round((engine.correct / 5) / elapsedMinutes) : 0
 
-  // CPM = correct characters / elapsed minutes
   const cpm = elapsedMinutes > 0.01 ? Math.round(engine.correct / elapsedMinutes) : 0
 
   const accuracy =
@@ -20,7 +17,6 @@ export function computeScore(engine, mode, timeLimitSeconds) {
       ? Math.round((engine.position / engine.text.length) * 100)
       : 0
 
-  // weighted score: speed and accuracy matter, completion bonus
   const raw = wpm * (accuracy / 100) * 10 + completion * 2
   const score = Math.round(Math.max(0, raw))
 

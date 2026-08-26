@@ -3,10 +3,10 @@ import HUD from './HUD.jsx'
 import GameOverOverlay from './GameOverOverlay.jsx'
 
 const DIFF = {
-  easy: { speed: [24, 34], spawn: 2800, max: 3 },
-  medium: { speed: [60, 78], spawn: 1800, max: 5 },
-  normal: { speed: [46, 60], spawn: 2100, max: 4 },
-  hard: { speed: [80, 105], spawn: 1450, max: 6 },
+  easy: { speed: [70, 90], spawn: 2600, max: 3 },
+  normal: { speed: [50, 66], spawn: 2100, max: 4 },
+  medium: { speed: [38, 52], spawn: 1750, max: 6 },
+  hard: { speed: [26, 40], spawn: 1500, max: 8 },
 }
 
 const ACCENTS = {
@@ -17,10 +17,9 @@ const ACCENTS = {
 
 const DEFAULT_INTRO = (
   <>
-    words fall from the sky — type any word to blast it before it hits the line.
+    type the falling words before they reach the bottom.
     <br />
-    wrong key = error · missed word = <b>-1 life</b> · you have <b>3 lives</b> ·{' '}
-    <b>60s</b> on the clock
+    <b>3 lives</b> · <b>60s</b> on the clock
   </>
 )
 
@@ -65,7 +64,9 @@ export default function GameEngine({ items, difficulty, active, mode, intro }) {
   const pauseStartRef = useRef(0)
   const rafRef = useRef(0)
   const itemsRef = useRef(items)
+  const activeRef = useRef(active)
   itemsRef.current = items
+  activeRef.current = active
 
   const syncStats = useCallback(() => {
     const s = statsRef.current
@@ -150,6 +151,7 @@ export default function GameEngine({ items, difficulty, active, mode, intro }) {
       }
 
       const cfg = DIFF[difficulty]
+      const speedRange = mode === 'enemy' ? [20, 32] : cfg.speed
       const word = {
         id: nextId++,
         label,
@@ -158,7 +160,7 @@ export default function GameEngine({ items, difficulty, active, mode, intro }) {
         y: -30,
         width,
         fontSize: Math.round(fontSize),
-        speed: cfg.speed[0] + Math.random() * (cfg.speed[1] - cfg.speed[0]),
+        speed: speedRange[0] + Math.random() * (speedRange[1] - speedRange[0]),
         typed: 0,
         done: false,
       }
@@ -288,6 +290,7 @@ export default function GameEngine({ items, difficulty, active, mode, intro }) {
           if (deepest) flashError(deepest)
         }
         setBufferBoth(prev)
+        if (inputRef.current) inputRef.current.value = prev
       }
       setWords([...wordsRef.current])
     },
@@ -299,6 +302,8 @@ export default function GameEngine({ items, difficulty, active, mode, intro }) {
       const value = e.target.value
       if (phaseRef.current === 'ready') {
         startGame()
+        if (inputRef.current) inputRef.current.value = ''
+        return
       }
       if (phaseRef.current !== 'playing') return
       processValue(value)
@@ -306,12 +311,47 @@ export default function GameEngine({ items, difficulty, active, mode, intro }) {
     [processValue, startGame],
   )
 
-  // focus management
+  // focus management — keep the input focused while this game is the active tab
   useEffect(() => {
     if (active && (phase === 'ready' || phase === 'playing')) {
       inputRef.current && inputRef.current.focus()
     }
   }, [phase, active])
+
+  useEffect(() => {
+    const isInteractive = (el) =>
+      el &&
+      typeof el.closest === 'function' &&
+      (el.closest('button') ||
+        el.closest('a') ||
+        el.closest('input') ||
+        el.closest('select') ||
+        el.closest('textarea'))
+    const onFocus = (e) => {
+      if (
+        activeRef.current &&
+        (phaseRef.current === 'ready' || phaseRef.current === 'playing') &&
+        !isInteractive(e.target)
+      ) {
+        inputRef.current && inputRef.current.focus()
+      }
+    }
+    const onPointerDown = (e) => {
+      if (!activeRef.current || phaseRef.current !== 'playing') return
+      if (isInteractive(e.target)) return
+      setTimeout(() => {
+        if (activeRef.current && phaseRef.current === 'playing') {
+          inputRef.current && inputRef.current.focus()
+        }
+      }, 0)
+    }
+    document.addEventListener('focusin', onFocus)
+    document.addEventListener('pointerdown', onPointerDown)
+    return () => {
+      document.removeEventListener('focusin', onFocus)
+      document.removeEventListener('pointerdown', onPointerDown)
+    }
+  }, [])
 
   // Enter to start / retry
   useEffect(() => {
@@ -439,9 +479,6 @@ export default function GameEngine({ items, difficulty, active, mode, intro }) {
 
         {phase === 'ready' && (
           <div className="start-panel">
-            <div className="start-title">
-              Code<span style={{ color: accent }}>Rush</span>
-            </div>
             <div className="start-sub">{intro || DEFAULT_INTRO}</div>
             <button className="btn" onClick={startGame}>
               Start

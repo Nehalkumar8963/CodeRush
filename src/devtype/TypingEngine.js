@@ -17,7 +17,6 @@ export function createEngine() {
     complete: false,
     startedAt: 0,
     finishedAt: 0,
-    // number of times a wrong key was pressed (for keystroke-level accuracy)
     wrongKeystrokes: 0,
     reset(text) {
       this.text = text
@@ -49,10 +48,6 @@ export function createEngine() {
     isDone() {
       return this.position >= this.text.length
     },
-    /**
-     * Handle one character typed (or backspace). Returns 'complete' when the
-     * snippet is fully typed, otherwise null.
-     */
     handleChar(ch) {
       if (this.complete) return null
       if (ch === '\u0008') {
@@ -78,10 +73,9 @@ export function createEngine() {
         this.correct += 1
         this.position += 1
       } else {
-        this.statuses[this.position] = CHAR_ERROR
         this.errors += 1
         this.wrongKeystrokes += 1
-        this.position += 1
+        return 'error'
       }
 
       if (this.isDone()) {
