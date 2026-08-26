@@ -40,18 +40,7 @@ Every arcade section (Normal / Code / Math / Enemy) has **Easy / Medium / Normal
 
 ---
 
-## UI Themes
 
-Pick your accent from the top-bar swatch menu — all applied live via CSS variables:
-
-- 🟡 **Gold** (default)
-- 🟢 **Green**
-- 🔵 **Blue**
-- 🔴 **Red**
-- ⚫ **Black** (monochrome, no glows)
-- 🪟 **Transparent** (frosted-glass surfaces)
-
-Choice persists across sessions.
 
 ---
 
