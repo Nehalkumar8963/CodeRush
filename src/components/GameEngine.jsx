@@ -151,7 +151,8 @@ export default function GameEngine({ items, difficulty, active, mode, intro }) {
       }
 
       const cfg = DIFF[difficulty]
-      const speedRange = mode === 'enemy' ? [20, 32] : cfg.speed
+      const speedRange =
+        mode === 'enemy' ? [20, 32] : mode === 'code' ? [20, 28] : cfg.speed
       const word = {
         id: nextId++,
         label,
