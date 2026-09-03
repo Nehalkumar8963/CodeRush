@@ -36,7 +36,7 @@ Every arcade section (Normal / Code / Math / Enemy) has **Easy / Medium / Normal
 - **WPM** = correct characters ÷ 5 ÷ elapsed minutes
 - **CPM** = correct characters ÷ elapsed minutes
 - **Accuracy** = correct ÷ total typed × 100
-- All statistics are computed from real typing — nothing is hardcoded
+- 
 
 ---
 
