@@ -31,14 +31,7 @@ Every arcade section (Normal / Code / Math / Enemy) has **Easy / Medium / Normal
 - Progress persists in `localStorage`
 - **Free Play** mode keeps the original timed/practice experience (15s / 30s / 60s / 120s / custom)
 
-### Scoring
 
-- **WPM** = correct characters ÷ 5 ÷ elapsed minutes
-- **CPM** = correct characters ÷ elapsed minutes
-- **Accuracy** = correct ÷ total typed × 100
-- 
-
----
 
 
 
